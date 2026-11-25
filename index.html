@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>⚡§ 17. Стрес і його вплив на здоров'я людини | Тренажер</title>
+<style>
+:root{--primary:#1e3a8a;--primary-dark:#1e2a5e;--primary-light:#3b5ccc;--accent:#2563eb;--success:#16a34a;--danger:#dc2626;--warning:#f59e0b;--bg:#f1f5f9;--card:#fff;--text:#1e293b;--text-muted:#64748b;--border:#e2e8f0;--theory-blue:#dbeafe;--theory-green:#dcfce7;--theory-purple:#f3e8ff;--theory-orange:#ffedd5;--theory-pink:#fce7f3;--theory-yellow:#fef3c7;--theory-red:#fee2e2}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;background:linear-gradient(135deg,#f3f4f6,#e5e7eb);color:var(--text);line-height:1.6;min-height:100vh;overflow-x:hidden;font-size:16px}
+.top-progress-bar{position:fixed;top:0;left:0;right:0;height:4px;background:var(--border);z-index:1001}
+.top-progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--success));width:0%;transition:width .5s}
+.progress-widget{position:fixed;top:80px;right:20px;background:#fff;padding:10px 12px;border-radius:10px;box-shadow:0 2px 10px rgba(30,58,138,.12);z-index:1000;min-width:150px;cursor:pointer;transition:all .3s}
+.progress-widget:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(30,58,138,.18)}
+.progress-widget-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;padding-bottom:8px;border-bottom:2px solid var(--border)}
+.progress-widget-title{font-weight:700;color:var(--primary);font-size:12px}
+.progress-widget-percentage{font-size:18px;font-weight:700;color:var(--accent)}
+.progress-widget-mini-map{display:flex;gap:4px;margin-top:8px}
+.mini-step{width:18px;height:18px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:600;color:var(--text-muted);transition:all .3s}
+.mini-step.current{background:var(--warning);color:#fff;animation:pulse 1.5s infinite}
+.mini-step.completed{background:var(--success);color:#fff}
+.toast-container{position:fixed;top:100px;right:20px;z-index:1002;display:flex;flex-direction:column;gap:8px;max-width:calc(100vw - 40px)}
+.toast{background:#fff;padding:16px 20px;border-radius:12px;box-shadow:0 8px 24px rgba(30,58,138,.2);display:flex;align-items:center;gap:12px;animation:toastIn .4s;border-left:4px solid var(--success);min-width:280px;max-width:360px}
+.toast.hiding{animation:toastOut .4s forwards}
+@keyframes toastIn{from{opacity:0;transform:translateX(100px)}to{opacity:1;transform:translateX(0)}}
+@keyframes toastOut{from{opacity:1;transform:translateX(0)}to{opacity:0;transform:translateX(100px)}}
+.toast-icon{font-size:24px;flex-shrink:0}
+.toast-message{font-weight:600;color:var(--text);font-size:14px}
+.header{background:linear-gradient(135deg,#1e2a5e 0%,#1e3a8a 50%,#2563eb 100%);color:#fff;padding:24px 32px;border-radius:0 0 16px 16px;box-shadow:0 4px 16px rgba(30,58,138,.15);margin-top:4px}
+.header-content{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.header h1{font-size:22px;font-weight:700;flex:1;min-width:200px}
+.header-buttons{display:flex;gap:12px;flex-wrap:wrap}
+.btn{padding:12px 24px;border-radius:10px;font-weight:600;cursor:pointer;transition:all .2s;border:none;font-size:16px;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;white-space:nowrap}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:#1d4ed8;box-shadow:0 4px 12px rgba(37,99,235,.3);transform:translateY(-2px)}
+.btn-secondary{background:#fff;color:var(--accent);border:2px solid var(--accent)}
+.btn-secondary:hover{background:#eff6ff}
+.btn-warning{background:var(--warning);color:#fff}
+.btn-warning:hover{background:#d97706}
+.btn-success{background:var(--success);color:#fff}
+.btn-success:hover{background:#15803d}
+.btn:focus{outline:3px solid #93c5fd;outline-offset:2px}
+.container{max-width:1200px;margin:0 auto;padding:40px 24px}
+.hero-unified{background:#fff;border-radius:16px;box-shadow:0 4px 16px rgba(30,58,138,.08);overflow:hidden;display:grid;grid-template-columns:1.3fr .7fr;align-items:stretch}
+.hero-illustration{background:#fff;padding:20px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.hero-illustration img{max-width:100%;height:auto;max-height:500px;object-fit:contain;border-radius:16px}
+.hero-illustration-title{color:var(--primary);font-size:20px;font-weight:700;margin-bottom:16px;padding-bottom:5px;border-bottom:2px solid var(--border);display:flex;align-items:center;justify-content:center;gap:8px}
+.hero-navigation{padding:20px 24px;display:flex;flex-direction:column;justify-content:center;border-left:1px solid #e2e8f0}
+.hero-navigation h2{color:var(--primary);font-size:16px;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--border);display:flex;align-items:center;gap:8px}
+.step-navigation{display:flex;flex-direction:column;gap:8px;flex:1}
+.step-nav-item{padding:8px 10px;border-radius:6px;cursor:pointer;transition:all .3s;border:2px solid var(--border);display:flex;align-items:center;gap:10px}
+.step-nav-item:hover{border-color:var(--accent);background:#eff6ff;transform:translateX(4px)}
+.step-nav-item.active{border-color:var(--warning);background:#fef3c7}
+.step-nav-item.completed{border-color:var(--success);background:#dcfce7}
+.step-nav-number{width:26px;height:26px;border-radius:50%;background:var(--border);color:var(--text-muted);display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;font-size:11px}
+.step-nav-item.active .step-nav-number{background:var(--warning);color:#fff}
+.step-nav-item.completed .step-nav-number{background:var(--success);color:#fff}
+.step-nav-content{flex:1;min-width:0}
+.step-nav-title{font-weight:600;color:var(--text);font-size:12px;line-height:1.3}
+.step-nav-status{font-size:10px;color:var(--text-muted)}
+.info-blocks{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px}
+.card{background:var(--card);border-radius:16px;padding:28px;box-shadow:0 4px 16px rgba(30,58,138,.08);margin-bottom:24px;transition:box-shadow .2s}
+.card:hover{box-shadow:0 8px 24px rgba(30,58,138,.14)}
+.card h2{font-size:22px;margin-bottom:16px;color:var(--primary)}
+.card h3{font-size:18px;margin-bottom:12px;color:var(--primary-dark)}
+.feature-list{list-style:none;padding:0}
+.feature-list li{padding:10px 0 10px 32px;position:relative;border-bottom:1px solid var(--border);font-size:15px}
+.feature-list li:last-child{border-bottom:none}
+.feature-list li::before{content:attr(data-icon);position:absolute;left:0;font-size:18px;top:10px}
+.tip-card{background:linear-gradient(135deg,#fef3c7,#fde68a);border-radius:12px;padding:16px;text-align:center;margin-top:24px;font-size:15px}
+.step-header{background:#fff;border-radius:16px;padding:24px;margin-bottom:24px;box-shadow:0 4px 16px rgba(30,58,138,.08)}
+.step-header-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:12px}
+.step-title{font-size:24px;color:var(--primary);font-weight:700}
+.step-badge{background:var(--warning);color:#fff;padding:6px 16px;border-radius:20px;font-weight:600;font-size:14px}
+.theory-compact{background:linear-gradient(135deg,var(--theory-blue),#bfdbfe);border:2px solid #93c5fd;border-radius:14px;padding:20px;margin:16px 0}
+.theory-compact h4{color:var(--primary);font-size:16px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.theory-compact p{font-size:14px;line-height:1.6;margin-bottom:8px}
+.key-point{background:linear-gradient(135deg,#fef3c7,#fde68a);border:2px solid #fbbf24;border-radius:12px;padding:16px;margin:16px 0;text-align:center;font-weight:600;color:#78350f}
+.situation-layout{display:grid;grid-template-columns:1fr 1.2fr;gap:24px;margin:24px 0;align-items:start}
+.situation-illustration-left{background:linear-gradient(135deg,#eff6ff,#dbeafe);border:2px solid #93c5fd;border-radius:12px;padding:20px;text-align:center;display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:240px}
+.situation-img{max-width:100%;height:auto;max-height:200px;object-fit:contain;border-radius:8px;margin-bottom:12px}
+.situation-caption{font-size:13px;color:var(--text-muted);font-style:italic;margin-top:8px}
+.situation-content-right{display:flex;flex-direction:column;gap:16px}
+.task-options{display:grid;gap:12px;margin:20px 0}
+.option{padding:16px;border:2px solid var(--border);border-radius:12px;cursor:pointer;transition:all .2s;display:flex;align-items:flex-start;gap:12px}
+.option:hover:not(.disabled){border-color:var(--accent);background:#eff6ff}
+.option.selected{border-color:var(--accent);background:#eff6ff}
+.option.correct{border-color:var(--success);background:#dcfce7}
+.option.incorrect{border-color:var(--danger);background:#fee2e2}
+.option.disabled{cursor:default;opacity:.8}
+.option-radio,.option-checkbox{width:24px;height:24px;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.option-radio{border-radius:50%}
+.option-checkbox{border-radius:6px}
+.option.selected .option-radio,.option.selected .option-checkbox{border-color:var(--accent);background:var(--accent)}
+.option.selected .option-radio::after,.option.selected .option-checkbox::after{content:'✓';color:#fff;font-size:14px}
+.option.correct .option-radio,.option.correct .option-checkbox{border-color:var(--success);background:var(--success)}
+.option.correct .option-radio::after,.option.correct .option-checkbox::after{content:'✓';color:#fff;font-size:14px}
+.option.incorrect .option-radio,.option.incorrect .option-checkbox{border-color:var(--danger);background:var(--danger)}
+.option.incorrect .option-radio::after,.option.incorrect .option-checkbox::after{content:'✕';color:#fff;font-size:14px}
+.option-text{flex:1}
+.option-label{font-weight:600;margin-bottom:4px}
+.feedback{padding:16px;border-radius:12px;margin:16px 0;animation:fadeIn .3s}
+.feedback-success{background:#dcfce7;border:2px solid var(--success);color:#166534}
+.feedback-error{background:#fee2e2;border:2px solid var(--danger);color:#991b1b}
+.feedback-warning{background:#fef3c7;border:2px solid var(--warning);color:#92400e}
+.navigation{display:flex;justify-content:space-between;gap:12px;margin-top:32px;flex-wrap:wrap}
+.navigation .btn{flex:1;min-width:140px}
+.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(15,23,42,.6);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;z-index:2000;opacity:0;visibility:hidden;transition:all .3s;padding:20px}
+.modal-overlay.active{opacity:1;visibility:visible}
+.modal{background:#fff;border-radius:16px;padding:32px;max-width:560px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 12px 40px rgba(30,58,138,.22);transform:scale(.9);transition:transform .3s}
+.modal-overlay.active .modal{transform:scale(1)}
+.modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;gap:12px}
+.modal-header h2{color:var(--primary);font-size:22px}
+.modal-close{background:none;border:none;font-size:28px;cursor:pointer;color:var(--text-muted);width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:8px}
+.modal-close:hover{background:var(--bg);color:var(--text)}
+.text-center{text-align:center}
+.mb-24{margin-bottom:24px}
+.mt-24{margin-top:24px}
+.hidden{display:none!important}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+.step6-header{background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;padding:32px;border-radius:16px;margin-bottom:24px;text-align:center;box-shadow:0 4px 16px rgba(245,158,11,.3)}
+.step6-header h2{font-size:28px;font-weight:800;margin-bottom:8px}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin-bottom:24px}
+.stat-card{background:#fff;padding:20px;border-radius:12px;box-shadow:0 4px 12px rgba(30,58,138,.08);text-align:center}
+.stat-value{font-size:32px;font-weight:800;color:var(--primary)}
+.stat-label{font-size:14px;color:var(--text-muted);margin-top:4px}
+.progress-circle-container{display:flex;justify-content:center;align-items:center;margin:24px 0}
+.progress-circle{width:180px;height:180px;border-radius:50%;background:conic-gradient(var(--success) 0%,var(--bg) 0%);display:flex;justify-content:center;align-items:center;transition:background 1s;box-shadow:0 4px 16px rgba(30,58,138,.1)}
+.progress-circle-inner{width:140px;height:140px;background:#fff;border-radius:50%;display:flex;flex-direction:column;justify-content:center;align-items:center}
+.circle-percentage{font-size:40px;font-weight:800;color:var(--primary)}
+.circle-label{font-size:14px;color:var(--text-muted)}
+.level-badge{display:inline-flex;align-items:center;gap:12px;background:linear-gradient(135deg,#eff6ff,#dbeafe);border:2px solid #bfdbfe;padding:16px 24px;border-radius:12px;margin:16px 0}
+.level-badge-icon{font-size:40px}
+.level-badge-title{font-size:18px;font-weight:700;color:var(--primary)}
+.level-badge-desc{font-size:14px;color:var(--text-muted)}
+.skill-eval{margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.skill-eval:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.skill-title{font-weight:600;font-size:16px}
+.star-rating{display:flex;gap:8px;margin-top:8px}
+.star{font-size:24px;cursor:pointer;color:var(--border);transition:color .2s}
+.star:hover,.star.active{color:var(--warning)}
+.theory-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin:20px 0}
+.theory-block{background:#fff;border-radius:14px;padding:20px;border:2px solid var(--border);transition:all .3s;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.theory-block:hover{transform:translateY(-4px);box-shadow:0 8px 20px rgba(0,0,0,.1)}
+.theory-block h4{color:var(--primary);margin-bottom:12px;font-size:16px;display:flex;align-items:center;gap:8px}
+.theory-block p{font-size:14px;line-height:1.6;color:var(--text)}
+.theory-block ul{list-style:none;padding:0;margin-top:8px}
+.theory-block ul li{padding:6px 0 6px 24px;position:relative;font-size:14px;border-bottom:1px solid var(--border)}
+.theory-block ul li:last-child{border-bottom:none}
+.theory-block ul li::before{content:attr(data-icon);position:absolute;left:0;font-size:16px;top:6px}
+.block-blue{background:linear-gradient(135deg,#eff6ff,#dbeafe);border-color:#93c5fd}
+.block-blue h4{color:#1e40af}
+.block-green{background:linear-gradient(135deg,#f0fdf4,#dcfce7);border-color:#86efac}
+.block-green h4{color:#166534}
+.block-purple{background:linear-gradient(135deg,#f5f3ff,#ede9fe);border-color:#c4b5fd}
+.block-purple h4{color:#6d28d9}
+.block-orange{background:linear-gradient(135deg,#fffbeb,#fef3c7);border-color:#fcd34d}
+.block-orange h4{color:#92400e}
+.block-pink{background:linear-gradient(135deg,#fce7f3,#fbcfe8);border-color:#f9a8d4}
+.block-pink h4{color:#be185d}
+.block-red{background:linear-gradient(135deg,#fee2e2,#fecaca);border-color:#ef4444}
+.block-red h4{color:#991b1b}
+.stress-levels-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:20px 0}
+.stress-level-card{background:#fff;border-radius:12px;padding:16px;border:2px solid var(--border);text-align:center}
+.stress-level-card h5{font-size:15px;margin-bottom:10px;padding-bottom:8px;border-bottom:2px solid var(--border)}
+.stress-level-card.emotional{border-color:#f9a8d4;background:linear-gradient(135deg,#fce7f3,#fbcfe8)}
+.stress-level-card.emotional h5{color:#be185d}
+.stress-level-card.physical{border-color:#86efac;background:linear-gradient(135deg,#f0fdf4,#dcfce7)}
+.stress-level-card.physical h5{color:#166534}
+.stress-level-card.cognitive{border-color:#c4b5fd;background:linear-gradient(135deg,#f5f3ff,#ede9fe)}
+.stress-level-card.cognitive h5{color:#6d28d9}
+.stress-level-card.behavioral{border-color:#fcd34d;background:linear-gradient(135deg,#fffbeb,#fef3c7)}
+.stress-level-card.behavioral h5{color:#92400e}
+.stress-level-card ul{list-style:none;padding:0;margin:0;text-align:left}
+.stress-level-card ul li{padding:4px 0;font-size:13px}
+.cycle-diagram{background:linear-gradient(135deg,#fee2e2,#fecaca);border:3px solid #ef4444;border-radius:16px;padding:24px;margin:24px 0}
+.cycle-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:16px}
+.cycle-step{background:#fff;padding:16px;border-radius:12px;text-align:center;border:2px solid var(--border)}
+.cycle-step-number{width:40px;height:40px;border-radius:50%;background:var(--danger);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;margin:0 auto 12px}
+.cycle-step-title{font-weight:600;color:var(--primary);margin-bottom:8px}
+.cycle-step-desc{font-size:14px;color:var(--text-muted)}
+.dnd-container{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:16px 0}
+.dnd-bank,.dnd-target{background:#fff;border:2px solid var(--border);border-radius:12px;padding:16px}
+.dnd-bank h4,.dnd-target h4{margin-bottom:12px;font-size:15px;color:var(--primary)}
+#stressBank,#stressTarget{display:flex;flex-direction:column;gap:8px;min-height:100px}
+.dnd-card{background:#fff;padding:12px;border-radius:8px;border:2px solid var(--border);cursor:grab;display:flex;align-items:center;gap:10px;font-size:14px;user-select:none;transition:all .2s;box-shadow:0 2px 4px rgba(0,0,0,.05);touch-action:none}
+.dnd-card:hover{border-color:var(--accent);transform:translateX(4px)}
+.dnd-card.touch-active{position:fixed;z-index:1000;pointer-events:none;opacity:.8}
+.dnd-card-icon{font-size:18px}
+.dnd-slot{background:#f8fafc;border:2px dashed var(--border);border-radius:8px;padding:12px;min-height:50px;display:flex;align-items:center;gap:12px;transition:all .2s;touch-action:none}
+.dnd-slot.drag-over{border-color:var(--accent);background:#eff6ff}
+.dnd-slot.filled{border-style:solid;border-color:var(--success);background:#f0fdf4}
+.dnd-slot-number{width:28px;height:28px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0}
+.dnd-slot-placeholder{color:var(--text-muted);font-size:14px;font-style:italic}
+.dnd-reset-btn{margin-top:12px;padding:8px 16px;background:var(--bg);border:1px solid var(--border);border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;color:var(--text);transition:all .2s}
+.dnd-reset-btn:hover{background:#e2e8f0}
+#matchingContainer{display:flex;flex-direction:column;gap:12px;margin:16px 0}
+.matching-row{display:grid;grid-template-columns:1fr 40px 1.5fr;gap:12px;align-items:center}
+.matching-left{background:var(--bg);padding:12px;border-radius:8px;font-weight:600;font-size:15px;border:2px solid var(--border)}
+.matching-arrow{text-align:center;font-size:20px;color:var(--text-muted)}
+.matching-select{width:100%;padding:12px;border:2px solid var(--border);border-radius:8px;font-size:15px;background:#fff;cursor:pointer;outline:none;transition:all .2s}
+.matching-select:focus{border-color:var(--accent)}
+.matching-select.correct{border-color:var(--success);background:#dcfce7;color:#166534}
+.matching-select.incorrect{border-color:var(--danger);background:#fee2e2;color:#991b1b}
+.slider-container{margin:16px 0}
+.slider-label{display:flex;justify-content:space-between;font-weight:600;margin-bottom:8px;font-size:15px}
+.slider-input{width:100%;height:8px;border-radius:4px;background:var(--border);outline:none;-webkit-appearance:none}
+.slider-input::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:var(--accent);cursor:pointer;box-shadow:0 2px 6px rgba(37,99,235,.3)}
+.slider-feedback{padding:16px;border-radius:12px;margin-top:16px;font-weight:600;text-align:center}
+.slider-feedback.excellent{background:#dcfce7;border:2px solid var(--success);color:#166534}
+.slider-feedback.good{background:#fef3c7;border:2px solid var(--warning);color:#92400e}
+.slider-feedback.needs-improvement{background:#fee2e2;border:2px solid var(--danger);color:#991b1b}
+.fill-blank-text{font-size:16px;line-height:2.2;font-weight:500}
+.fill-blank-select{padding:4px 8px;border:2px solid var(--border);border-radius:6px;font-size:15px;font-weight:600;color:var(--primary);background:#fff;cursor:pointer;outline:none;transition:all .2s}
+.fill-blank-select:focus{border-color:var(--accent)}
+.fill-blank-select.correct{border-color:var(--success);background:#dcfce7;color:#166534}
+.fill-blank-select.incorrect{border-color:var(--danger);background:#fee2e2;color:#991b1b}
+.resource-card{background:#fff;border-radius:14px;padding:20px;margin:16px 0;border:2px solid var(--border);transition:all .3s}
+.resource-card:hover{border-color:var(--accent);box-shadow:0 4px 12px rgba(37,99,235,.15)}
+.resource-card h4{color:var(--primary);margin-bottom:12px;font-size:17px;display:flex;align-items:center;gap:8px}
+.resource-card p{font-size:14px;line-height:1.6;color:var(--text);margin-bottom:12px}
+.resource-link{display:inline-block;padding:10px 20px;background:var(--accent);color:#fff;border-radius:8px;text-decoration:none;font-weight:600;font-size:14px;transition:all .2s}
+.resource-link:hover{background:#1d4ed8;transform:translateY(-2px)}
+.accordion-item{background:#fff;border:2px solid var(--border);border-radius:12px;margin:12px 0;overflow:hidden}
+.accordion-header{padding:16px 20px;background:linear-gradient(135deg,#eff6ff,#dbeafe);cursor:pointer;font-weight:600;color:var(--primary);display:flex;justify-content:space-between;align-items:center;transition:all .2s}
+.accordion-header:hover{background:linear-gradient(135deg,#dbeafe,#bfdbfe)}
+.accordion-icon{font-size:20px;transition:transform .3s}
+.accordion-item.active .accordion-icon{transform:rotate(180deg)}
+.accordion-content{max-height:0;overflow:hidden;transition:max-height .3s ease-out}
+.accordion-item.active .accordion-content{max-height:600px}
+.accordion-body{padding:16px 20px;border-top:2px solid var(--border)}
+.circle-control{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:20px 0}
+.circle-inside,.circle-outside{border-radius:14px;padding:20px;min-height:200px}
+.circle-inside{background:linear-gradient(135deg,#dcfce7,#bbf7d0);border:3px solid #16a34a}
+.circle-outside{background:linear-gradient(135deg,#fef3c7,#fde68a);border:3px dashed #f59e0b}
+.circle-inside h4,.circle-outside h4{text-align:center;margin-bottom:12px;font-size:16px}
+.circle-inside ul,.circle-outside ul{list-style:none;padding:0}
+.circle-inside li,.circle-outside li{padding:8px 0 8px 28px;position:relative;font-size:14px;border-bottom:1px solid rgba(0,0,0,.08)}
+.circle-inside li::before,.circle-outside li::before{position:absolute;left:0;font-size:16px;top:8px}
+.circle-inside li::before{content:'✅'}
+.circle-outside li::before{content:'❌'}
+@media(max-width:968px){
+.hero-unified{grid-template-columns:1fr}
+.hero-illustration{border-bottom:2px dashed var(--accent);min-height:300px}
+.info-blocks{grid-template-columns:1fr}
+.progress-widget{display:none!important}
+.situation-layout{grid-template-columns:1fr}
+.theory-grid{grid-template-columns:1fr}
+.stress-levels-grid{grid-template-columns:1fr}
+.dnd-container{grid-template-columns:1fr}
+.circle-control{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+.header{padding:16px;border-radius:0 0 12px 12px}
+.header h1{font-size:16px}
+.header-buttons .btn{padding:10px 12px;font-size:14px}
+.container{padding:20px 16px}
+.card{padding:20px}
+.navigation .btn{width:100%;min-width:100%}
+.task-options{grid-template-columns:1fr!important}
+.cycle-steps{grid-template-columns:1fr}
+.matching-row{grid-template-columns:1fr;gap:8px}
+.matching-arrow{transform:rotate(90deg);text-align:center}
+}
+@media(max-width:480px){
+.step-title{font-size:18px}
+.card h2{font-size:18px}
+.option{padding:12px;font-size:13px}
+}
+</style>
+</head>
+<body>
+<div class="top-progress-bar"><div class="top-progress-fill" id="topProgressBar"></div></div>
+<div class="progress-widget" id="progressWidget" onclick="showProgressModal()" tabindex="0" role="button" aria-label="Progress">
+<div class="progress-widget-header"><span class="progress-widget-title">Прогрес</span><span class="progress-widget-percentage" id="widgetPercentage">0%</span></div>
+<div style="font-size:10px;color:var(--text-muted);margin-bottom:6px">Виконано: <strong id="widgetTasks">0/12</strong></div>
+<div class="progress-widget-mini-map" id="widgetMiniMap"></div>
+</div>
+<div class="toast-container" id="toastContainer"></div>
+<header class="header">
+<div class="header-content">
+<h1 id="headerTitle">⚡§ 17. Стрес і його вплив на здоров'я людини</h1>
+<div class="header-buttons">
+<button class="btn btn-secondary" onclick="goToMainPage()">← До змісту</button>
+<button class="btn btn-secondary" onclick="showProgressModal()">📊 Прогрес</button>
+<button class="btn btn-secondary" onclick="showHelpModal()">❓ Як працювати?</button>
+</div>
+</div>
+</header>
+<!-- ГОЛОВНА -->
+<main class="container hidden" id="mainPage">
+<div class="hero-unified">
+<div class="hero-illustration">
+<div class="hero-illustration-title">§ 17. Стрес і його вплив на здоров'я людини</div>
+<img src="https://res.cloudinary.com/dmydvhkzr/image/upload/v1785328734/15-01_kalpgm.png" alt="Стрес">
+</div>
+<div class="hero-navigation">
+<h2>Навігація по кроках</h2>
+<div class="step-navigation" id="stepNavigation"></div>
+<button class="btn btn-primary mt-24" onclick="goToStep(1)" style="width:100%;font-size:17px;padding:14px">🚀 Розпочати параграф →</button>
+</div>
+</div>
+<div class="info-blocks">
+<div class="card" style="margin:0"><h3>🎯 У цьому параграфі ти:</h3>
+<ul class="feature-list">
+<li data-icon="🔍">пригадаєш, що таке стрес і його види</li>
+<li data-icon="📊">дізнаєшся, як стрес впливає на здоров'я</li>
+<li data-icon="🔄">зрозумієш, як розірвати замкнене коло стресу</li>
+<li data-icon="💪">навчишся розвивати стресостійкість</li>
+<li data-icon="🆘">ознайомишся з джерелами психологічної допомоги</li>
+</ul></div>
+<div class="card" style="margin:0"><h3>📋 Що ти робитимеш?</h3>
+<ul class="feature-list">
+<li data-icon="✅">Аналізувати стресові ситуації</li>
+<li data-icon="📊">Визначати рівні впливу стресу</li>
+<li data-icon="💡">Застосовувати способи подолання стресу</li>
+<li data-icon="🔍">Розпізнавати ознаки дистресу</li>
+<li data-icon="⭐">Оціниш свої вміння</li>
+</ul></div>
+</div>
+<div class="tip-card">💡 <strong>Пам'ятай:</strong> Ми не повинні уникати стресу. Ми повинні навчитися використовувати його. (Ганс Сельє)</div>
+</main>
+<!-- КРОК 1 -->
+<main class="container hidden" id="step1Page">
+<div class="step-header"><h2 class="step-title">🎯 Крок 1. Стартове завдання</h2></div>
+<section class="card">
+<div style="background:linear-gradient(135deg,#fef3c7,#fde68a);border:2px solid #fbbf24;border-radius:12px;padding:16px;margin-bottom:24px">
+<strong style="color:#92400e;font-size:16px;display:block;margin-bottom:8px">📌 Ситуація:</strong>
+<p>Карина їде на важливий для себе захід, але транспорт зупиняється на мосту через аварію. Вона розуміє, що запізнюється, але вийти з транспорту неможливо, зв'язок працює погано. Що відчуває Карина в цій ситуації?</p>
+</div>
+<div class="situation-layout">
+<div class="situation-illustration-left">
+<img src="https://res.cloudinary.com/dmydvhkzr/image/upload/v1785328734/15-02_rjo2aq.png" alt="Затор на дорозі" class="situation-img">
+</div>
+<div class="situation-content-right">
+<div class="task-options" id="s1t1">
+<div class="option" data-correct="false" onclick="sel(this,'s1t1')" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}"><div class="option-radio"></div><div class="option-text"><div class="option-label">😐 Байдужість, нічого особливого</div></div></div>
+<div class="option" data-correct="true" onclick="sel(this,'s1t1')" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}"><div class="option-radio"></div><div class="option-text"><div class="option-label">😰 Тривогу, напруження, роздратування через неможливість контролювати ситуацію</div></div></div>
+<div class="option" data-correct="false" onclick="sel(this,'s1t1')" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}"><div class="option-radio"></div><div class="option-text"><div class="option-label">😊 Радість від несподіваної перерви</div></div></div>
+</div></div></div>
+<div id="s1t1f" class="feedback" style="display:none"></div>
+<div class="navigation">
+<button class="btn btn-secondary" onclick="goToMainPage()">← До змісту</button>
+<button class="btn btn-primary" onclick="chk('s1t1','step1_task1')">✓ Перевірити</button>
+<button class="btn btn-success" onclick="goToStep(2)">Далі: Крок 2 →</button>
+</div>
+</section>
+</main>
+<!-- КРОК 2 -->
+<main class="container hidden" id="step2Page">
+<div class="step-header"><div class="step-header-top"><h2 class="step-title">📚 Крок 2. Що таке стрес?</h2><span class="step-badge">3 завдання</span></div></div>
+<section class="card" id="s2Theory">
+<h2>📖 Теоретичний блок</h2>
+<h3 style="margin:20px 0 16px;color:var(--primary)">Види стресу:</h3>
+<div class="theory-grid">
+<div class="theory-block block-blue">
+<h4>⚡ Стрес</h4>
+<p>Це реакція організму на зміни у внутрішньому або зовнішньому середовищі. Стрес — це нормальна реакція організму людини.</p>
+</div>
+<div class="theory-block block-green">
+<h4>✅ Еустрес (короткочасний стрес)</h4>
+<p>Допомагає людині мобілізувати сили та діяти відповідно до обставин, наприклад, зібратися перед виступом. Корисний для продуктивності.</p>
+</div>
+<div class="theory-block block-red">
+<h4>❌ Дистрес (тривалий стрес)</h4>
+<p>Надто сильний чи тривалий стрес виснажує організм і негативно впливає на здоров'я людини. Шкодить фізичному та психічному стану.</p>
+</div>
+</div>
+<div class="key-point">💡 <strong>Важливо!</strong> Стрес є природною реакцією організму на будь-які зміни та небезпеку. Однак тривалий стрес шкодить здоров'ю.</div>
+<h3 style="margin:24px 0 16px;color:var(--primary)">📊 Вплив стресу на здоров'я</h3>
+<div class="stress-levels-grid">
+<div class="stress-level-card emotional"><h5>💬 ЕМОЦІЙНИЙ РІВЕНЬ</h5><ul><li>Дратівливість</li><li>Тривожність</li><li>Страх</li><li>Емоційне виснаження</li><li>Посилені або ослаблені емоційні реакції</li></ul></div>
+<div class="stress-level-card physical"><h5>🏃 ФІЗИЧНИЙ РІВЕНЬ</h5><ul><li>Хронічна втома</li><li>Часті застудні захворювання</li><li>Головний біль</li><li>Проблеми зі сном</li><li>Різка втрата або збільшення маси тіла</li></ul></div>
+<div class="stress-level-card cognitive"><h5>🧠 КОГНІТИВНИЙ РІВЕНЬ</h5><ul><li>Нав'язливі думки</li><li>Негативне мислення</li><li>Розсіяна увага</li><li>Погіршення пам'яті</li><li>Складність у прийнятті рішень</li></ul></div>
+<div class="stress-level-card behavioral"><h5>👣 ПОВЕДІНКОВИЙ РІВЕНЬ</h5><ul><li>Зниження працездатності</li><li>Уникнення спілкування</li><li>Прокрастинація</li><li>Поява нездорових звичок</li></ul></div>
+</div>
+<div class="key-point">💡 <strong>Важливо!</strong> Усі компоненти здоров'я взаємопов'язані. Вплив стресу на одному рівні може позначатися на інших рівнях.</div>
+<div class="navigation"><button class="btn btn-secondary" onclick="goToMainPage()">← До змісту</button><button class="btn btn-primary" onclick="showS2('s2t1')">Далі: Завдання 1 →</button></div>
+</section>
+<section class="card hidden" id="s2t1">
+<h2>📝 Завдання 1. Визнач види стресу</h2>
+<div class="feedback feedback-warning mb-24"><strong>📌 Інструкція:</strong> Обери всі характеристики, що описують еустрес.</div>
+<div class="task-options" id="s2t1o">
+<div class="option" data-correct="true" onclick="tog(this)" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}"><div class="option-checkbox"></div><div class="option-text"><div class="option-label">⚡ Короткочасний</div></div></div>
+<div class="option" data-correct="true" onclick="tog(this)" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}"><div class="option-checkbox"></div><div class="option-text"><div class="option-label">💪 Мобілізує сили організму</div></div></div>
+<div class="option" data-correct="false" onclick="tog(this)" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}"><div class="option-checkbox"></div><div class="option-text"><div class="option-label">😰 Виснажує організм</div></div></div>
+<div class="option" data-correct="true" onclick="tog(this)" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}"><div class="option-checkbox"></div><div class="option-text"><div class="option-label">🎯 Допомагає зібратися в стресовій ситуації</div></div></div>
+<div class="option" data-correct="false" onclick="tog(this)" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}"><div class="option-checkbox"></div><div class="option-text"><div class="option-label">📉 Негативно впливає на здоров'я</div></div></div>
+</div>
+<div id="s2t1f" class="feedback" style="display:none"></div>
+<div class="navigation"><button class="btn btn-secondary" onclick="showS2('s2Theory')">← Назад</button><button class="btn btn-primary" onclick="chkMulti('s2t1o','s2t1f',3,'step2_task1')">✓ Перевірити</button><button class="btn btn-success" onclick="showS2('s2t2')">Далі →</button></div>
+</section>
+<section class="card hidden" id="s2t2">
+<h2>🔄 Завдання 2. Розташуй у правильному порядку</h2>
+<div class="feedback feedback-warning mb-24">
+<strong>📌 Інструкція:</strong> Розташуй етапи стресової реакції у правильній послідовності (від 1 до 3).<br><br>
+<strong>💻 На комп'ютері:</strong> перетягни картки мишею у потрібні слоти.<br>
+<strong>📱 На телефоні/планшеті:</strong>
+<ol style="margin:8px 0 0 20px;padding:0;">
+<li>Натисни на картку — вона виділиться жовтою рамкою</li>
+<li>Натисни на слот (порожнє місце) — картка переміститься туди</li>
+<li>Повторюй, доки не розмістиш усі картки</li>
+</ol>
+<em style="color:#92400e;margin-top:8px;display:block">💡 Порада: Якщо потрібно перемістити картку назад — просто натисни на неї, а потім на інший слот.</em>
+</div><div class="dnd-container">
+<div class="dnd-bank"><h4>🔄 Етапи стресової реакції</h4><div id="stressBank"></div><button class="dnd-reset-btn" onclick="resetStress()">🔄 Перемішати</button></div>
+<div class="dnd-target"><h4>✅ Правильний порядок</h4><div id="stressTarget">
+<div class="dnd-slot" data-pos="1" onclick="dropStressHere(this)"><div class="dnd-slot-number">1</div><div class="dnd-slot-placeholder">Перший етап...</div></div>
+<div class="dnd-slot" data-pos="2" onclick="dropStressHere(this)"><div class="dnd-slot-number">2</div><div class="dnd-slot-placeholder">Другий етап...</div></div>
+<div class="dnd-slot" data-pos="3" onclick="dropStressHere(this)"><div class="dnd-slot-number">3</div><div class="dnd-slot-placeholder">Третій етап...</div></div>
+</div></div>
+</div>
+<div id="s2t2f" class="feedback" style="display:none"></div>
+<div class="navigation"><button class="btn btn-secondary" onclick="showS2('s2t1')">← Назад</button><button class="btn btn-primary" onclick="chkStress()">✓ Перевірити</button><button class="btn btn-success" onclick="showS2('s2t3')">Далі →</button></div>
+</section>
+<section class="card hidden" id="s2t3">
+<h2>📝 Завдання 3. Ситуація Олександра</h2>
+<div class="feedback feedback-warning mb-24"><strong>📌 Ситуація:</strong> У 2021 році в Мелітополі 17-річний Олександр Оганьян їхав у маршрутці, коли водієві раптово стало зле за кермом. Транспорт виїхав на зустрічну смугу. Олександр швидко підбіг до водія, спрямував маршрутку на узбіччя та зупинив її. Хлопець розповідав, що діяв майже автоматично, не маючи часу на довгі роздуми. Який вид стресу допоміг Олександру?</div>
+<div class="situation-layout">
+<div class="situation-illustration-left">
+<img src="https://res.cloudinary.com/dmydvhkzr/image/upload/v1785328728/15-03_n9goqc.png" alt="Олександр у маршрутці" class="situation-img">
+</div>
+<div class="situation-content-right">
+<div class="task-options" id="s2t3">
+<div class="option" data-correct="true" onclick="sel(this,'s2t3')" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}"><div class="option-radio"></div><div class="option-text"><div class="option-label">⚡ Еустрес</div></div></div>
+<div class="option" data-correct="false" onclick="sel(this,'s2t3')" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}"><div class="option-radio"></div><div class="option-text"><div class="option-label">😰 Дистрес</div></div></div>
+<div class="option" data-correct="false" onclick="sel(this,'s2t3')" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}"><div class="option-radio"></div><div class="option-text"><div class="option-label">😐 Стрес не вплинув на ситуацію</div></div></div>
+</div></div></div>
+<div id="s2t3f" class="feedback" style="display:none"></div>
+<div class="navigation"><button class="btn btn-secondary" onclick="showS2('s2t2')">← Назад</button><button class="btn btn-primary" onclick="chk('s2t3','step2_task3')">✓ Перевірити</button><button class="btn btn-success" onclick="goToStep(3)">Далі: Крок 3 →</button></div>
+</section>
+</main>
+<!-- КРОК 3 -->
+<main class="container hidden" id="step3Page">
+<div class="step-header"><div class="step-header-top"><h2 class="step-title">🔄 Крок 3. Замкнене коло стресу</h2><span class="step-badge">3 завдання</span></div></div>
+<section class="card" id="s3Theory">
+<h2>📖 Теоретичний блок</h2>
+<h3 style="margin:20px 0 16px;color:var(--primary)">🔄 Ефект самопідтримки стресу</h3>
+<div class="theory-compact">
+<h4>🔄 ЗАМКНЕНЕ КОЛО СТРЕСУ</h4>
+<p>Емоційне напруження під час стресу поступово впливає на думки, поведінку й фізичний стан людини. Через це виникає замкнене коло, у якому стрес посилює сам себе.</p>
+<p><strong>Водночас це коло можна розірвати,</strong> вплинувши на один з рівнів здоров'я людини.</p>
+</div>
+<div class="cycle-diagram">
+<h3 style="text-align:center;color:var(--primary);margin-bottom:16px">🔄 ЗАМКНЕНЕ КОЛО СТРЕСУ</h3>
+<div class="cycle-steps">
+<div class="cycle-step"><div class="cycle-step-number">1</div><div class="cycle-step-title">Емоційний рівень</div><div class="cycle-step-desc">Тривога, злість</div></div>
+<div class="cycle-step"><div class="cycle-step-number">2</div><div class="cycle-step-title">Когнітивний рівень</div><div class="cycle-step-desc">Нав'язливі думки</div></div>
+<div class="cycle-step"><div class="cycle-step-number">3</div><div class="cycle-step-title">Фізичний рівень</div><div class="cycle-step-desc">Безсоння, втома</div></div>
+<div class="cycle-step"><div class="cycle-step-number">4</div><div class="cycle-step-title">Поведінковий рівень</div><div class="cycle-step-desc">Сварки, ізоляція</div></div>
+</div>
+</div>
+<div class="key-point">💡 <strong>Щоб розірвати коло стресу,</strong> інколи достатньо покращити щось лише на одному рівні. Це поступово відновить баланс.</div>
+<h3 style="margin:24px 0 16px;color:var(--primary)">🎯 Коло контролю</h3>
+<div class="theory-compact">
+<h4>🎯 «КОЛО КОНТРОЛЮ»</h4>
+<p>Часто люди потрапляють в коло стресу через події, які не можуть контролювати. Тому важливо розуміти, на що ми можемо вплинути, а що від нас не залежить.</p>
+</div>
+<div class="circle-control">
+<div class="circle-inside">
+<h4>✅ МОЖУ КОНТРОЛЮВАТИ</h4>
+<ul>
+<li>Підготовка до контрольної роботи</li>
+<li>Мої думки та ставлення до подій</li>
+<li>Взяти парасольку (якщо дощ)</li>
+<li>Попередити про затримку</li>
+</ul>
+</div>
+<div class="circle-outside">
+<h4>❌ НЕ МОЖУ КОНТРОЛЮВАТИ</h4>
+<ul>
+<li>Складність завдань в контрольній</li>
+<li>Дії інших людей</li>
+<li>Дощ</li>
+<li>Затор на дорозі</li>
+</ul>
+</div>
+</div>
+<div class="key-point">💡 <strong>Важливо!</strong> Зосереджуйся на тому, що ти можеш контролювати. Це допоможе зменшити стрес.</div>
+<div class="navigation"><button class="btn btn-secondary" onclick="goToMainPage()">← До змісту</button><button class="btn btn-primary" onclick="showS3('s3t1')">Далі: Завдання 1 →</button></div>
+</section>
+<section class="card hidden" id="s3t1">
+<h2>🔗 Завдання 1. Визнач рівень впливу стресу</h2>
+<div class="feedback feedback-warning mb-24"><strong>📌 Інструкція:</strong> З'єднай симптом із відповідним рівнем впливу стресу.</div>
+<div id="matchingContainer">
+<div class="matching-row"><div class="matching-left">😰 Постійна тривога</div><div class="matching-arrow">→</div><select class="matching-select" id="m1"><option value="">Обери рівень...</option><option value="a">Фізичний рівень</option><option value="b">Емоційний рівень</option><option value="c">Когнітивний рівень</option><option value="d">Поведінковий рівень</option></select></div>
+<div class="matching-row"><div class="matching-left">😴 Безсоння</div><div class="matching-arrow">→</div><select class="matching-select" id="m2"><option value="">Обери рівень...</option><option value="a">Фізичний рівень</option><option value="b">Емоційний рівень</option><option value="c">Когнітивний рівень</option><option value="d">Поведінковий рівень</option></select></div>
+<div class="matching-row"><div class="matching-left">🧠 Погіршення пам'яті</div><div class="matching-arrow">→</div><select class="matching-select" id="m3"><option value="">Обери рівень...</option><option value="a">Фізичний рівень</option><option value="b">Емоційний рівень</option><option value="c">Когнітивний рівень</option><option value="d">Поведінковий рівень</option></select></div>
+<div class="matching-row"><div class="matching-left">🚫 Уникнення спілкування</div><div class="matching-arrow">→</div><select class="matching-select" id="m4"><option value="">Обери рівень...</option><option value="a">Фізичний рівень</option><option value="b">Емоційний рівень</option><option value="c">Когнітивний рівень</option><option value="d">Поведінковий рівень</option></select></div>
+</div>
+<div id="s3t1f" class="feedback" style="display:none"></div>
+<div class="navigation"><button class="btn btn-secondary" onclick="showS3('s3Theory')">← Назад</button><button class="btn btn-primary" onclick="chkMatching()">✓ Перевірити</button><button class="btn btn-success" onclick="showS3('s3t2')">Далі →</button></div>
+</section>
+<section class="card hidden" id="s3t2">
+<h2>💡 Завдання 2. Ситуація Ясі: як розірвати коло стресу?</h2>
+<div class="feedback feedback-warning mb-24"><strong>📌 Ситуація:</strong> Батьки сказали Ясі, що змушені переїхати в інше місто. Дівчина спочатку розізлилась, а потім її наповнила тривога. Ясю не відпускають нав'язливі думки: «Друзі швидко мене забудуть». Через постійне напруження вона почала погано спати, відчувати втому та головний біль. Яся починає сваритися з батьками з будь-якої причини.</div>
+<p style="margin:12px 0;color:var(--text-muted);font-style:italic">📌 <strong>Інструкція:</strong> Розкрий кожне питання та обери одну правильну відповідь, щоб зрозуміти, як Яся може розірвати замкнене коло стресу на кожному рівні.</p>
+<div class="accordion-item">
+<div class="accordion-header" onclick="toggleAccordion(this)">
+<span>📋 Питання 1: Що Яся могла б зробити на емоційному рівні?</span>
+<span class="accordion-icon">▼</span>
+</div>
+<div class="accordion-content">
+<div class="accordion-body">
+<div class="task-options" id="s3t2q1">
+<div class="option" data-correct="true" onclick="selAcc(this,'s3t2q1','q1')" tabindex="0"><div class="option-radio"></div><div class="option-text"><div class="option-label">💬 Ділитися з батьками своїми переживаннями</div></div></div>
+<div class="option" data-correct="false" onclick="selAcc(this,'s3t2q1','q1')" tabindex="0"><div class="option-radio"></div><div class="option-text"><div class="option-label">🙈 Приховувати свої почуття та робити вигляд, що все добре</div></div></div>
+<div class="option" data-correct="false" onclick="selAcc(this,'s3t2q1','q1')" tabindex="0"><div class="option-radio"></div><div class="option-text"><div class="option-label">😠 Ще більше дратуватися</div></div></div>
+</div>
+<div id="s3t2q1f" class="feedback" style="display:none;margin-top:12px"></div>
+</div>
+</div>
+</div>
+<div class="accordion-item">
+<div class="accordion-header" onclick="toggleAccordion(this)">
+<span>📋 Питання 2: Що Яся могла б зробити на когнітивному рівні?</span>
+<span class="accordion-icon">▼</span>
+</div>
+<div class="accordion-content">
+<div class="accordion-body">
+<div class="task-options" id="s3t2q2">
+<div class="option" data-correct="false" onclick="selAcc(this,'s3t2q2','q2')" tabindex="0"><div class="option-radio"></div><div class="option-text"><div class="option-label">😞 Постійно уявляти найгірший розвиток подій</div></div></div>
+<div class="option" data-correct="true" onclick="selAcc(this,'s3t2q2','q2')" tabindex="0"><div class="option-radio"></div><div class="option-text"><div class="option-label">💭 Визнати, що вона не може змінити ситуацію</div></div></div>
+<div class="option" data-correct="false" onclick="selAcc(this,'s3t2q2','q2')" tabindex="0"><div class="option-radio"></div><div class="option-text"><div class="option-label">🚫 Повністю ігнорувати свої думки та переживання</div></div></div>
+</div>
+<div id="s3t2q2f" class="feedback" style="display:none;margin-top:12px"></div>
+</div>
+</div>
+</div>
+<div class="accordion-item">
+<div class="accordion-header" onclick="toggleAccordion(this)">
+<span>📋 Питання 3: Що Яся могла б зробити на поведінковому рівні?</span>
+<span class="accordion-icon">▼</span>
+</div>
+<div class="accordion-content">
+<div class="accordion-body">
+<div class="task-options" id="s3t2q3">
+<div class="option" data-correct="true" onclick="selAcc(this,'s3t2q3','q3')" tabindex="0"><div class="option-radio"></div><div class="option-text"><div class="option-label">👥 Частіше спілкуватися з друзями</div></div></div>
+<div class="option" data-correct="false" onclick="selAcc(this,'s3t2q3','q3')" tabindex="0"><div class="option-radio"></div><div class="option-text"><div class="option-label">🚪 Уникати друзів і припинити з ними спілкуванняу</div></div></div>
+<div class="option" data-correct="false" onclick="selAcc(this,'s3t2q3','q3')" tabindex="0"><div class="option-radio"></div><div class="option-text"><div class="option-label">😡 Сваритися з близькими через кожну дрібницю</div></div></div>
+</div>
+<div id="s3t2q3f" class="feedback" style="display:none;margin-top:12px"></div>
+</div>
+</div>
+</div>
+<div class="accordion-item">
+<div class="accordion-header" onclick="toggleAccordion(this)">
+<span>📋 Питання 4: Що Яся могла б зробити на фізичному рівні?</span>
+<span class="accordion-icon">▼</span>
+</div>
+<div class="accordion-content">
+<div class="accordion-body">
+<div class="task-options" id="s3t2q4">
+<div class="option" data-correct="false" onclick="selAcc(this,'s3t2q4','q4')" tabindex="0"><div class="option-radio"></div><div class="option-text"><div class="option-label">☕ Пити багато кави, щоб не відчувати втомун</div></div></div>
+<div class="option" data-correct="true" onclick="selAcc(this,'s3t2q4','q4')" tabindex="0"><div class="option-radio"></div><div class="option-text"><div class="option-label">🚶 Гуляти щовечора на свіжому повітрі</div></div></div>
+<div class="option" data-correct="false" onclick="selAcc(this,'s3t2q4','q4')" tabindex="0"><div class="option-radio"></div><div class="option-text"><div class="option-label">📱 Проводити всю ніч у телефоні, щоб відволіктися</div></div></div>
+</div>
+<div id="s3t2q4f" class="feedback" style="display:none;margin-top:12px"></div>
+</div>
+</div>
+</div>
+<div id="s3t2f" class="feedback" style="display:none"></div>
+<div class="navigation"><button class="btn btn-secondary" onclick="showS3('s3t1')">← Назад</button><button class="btn btn-primary" onclick="chkAccordion('s3t2')">✓ Завершити</button><button class="btn btn-success" onclick="showS3('s3t3')">Далі →</button></div>
+</section>
+<section class="card hidden" id="s3t3">
+<h2>🎯 Завдання 3. Заповни пропуски: Коло контролю</h2>
+<div class="feedback feedback-warning mb-24"><strong>📌 Інструкція:</strong> Обери правильні слова з випадаючих списків, щоб заповнити пропуски у тексті про коло контролю.</div>
+<div style="background:linear-gradient(135deg,#eff6ff,#dbeafe);border:2px solid #93c5fd;border-radius:14px;padding:24px;margin:16px 0">
+<p class="fill-blank-text">
+Щоб зменшити стрес, важливо розрізняти те, що ми можемо
+<select class="fill-blank-select" id="fb1"><option value="">???</option><option value="a">контролювати</option><option value="b">ігнорувати</option><option value="c">змінити</option></select>,
+і те, що від нас не
+<select class="fill-blank-select" id="fb2"><option value="">???</option><option value="a">залежить</option><option value="b">тікає</option><option value="c">ховається</option></select>.
+Зосереджуйся на своїх
+<select class="fill-blank-select" id="fb3"><option value="">???</option><option value="a">діях і думках</option><option value="b">емоціях інших</option><option value="c">погоді</option></select>,
+а не на
+<select class="fill-blank-select" id="fb4"><option value="">???</option><option value="a">вчинках інших людей</option><option value="b">собі</option><option value="c">навчанні</option></select>.
+Це допоможе зберегти
+<select class="fill-blank-select" id="fb5"><option value="">???</option><option value="a">спокій</option><option value="b">гнів</option><option value="c">стрес</option></select>.
+</p>
+</div>
+<div id="s3t3f" class="feedback" style="display:none"></div>
+<div class="navigation"><button class="btn btn-secondary" onclick="showS3('s3t2')">← Назад</button><button class="btn btn-primary" onclick="chkFillBlanks()">✓ Перевірити</button><button class="btn btn-success" onclick="goToStep(4)">Далі: Крок 4 →</button></div>
+</section>
+</main>
+<!-- КРОК 4 -->
+<main class="container hidden" id="step4Page">
+<div class="step-header"><div class="step-header-top"><h2 class="step-title">💪 Крок 4. Підтримка психічного здоров'я</h2><span class="step-badge">4 завдання</span></div></div>
+<section class="card" id="s4Theory">
+<h2>📖 Теоретичний блок</h2>
+<h3 style="margin:20px 0 16px;color:var(--primary)">Як підтримувати психічне здоров'я під час стресу:</h3>
+<div class="theory-grid">
+<div class="theory-block block-blue"><h4>🏃 ФІЗИЧНИЙ РІВЕНЬ</h4><ul><li data-icon="😴">Повноцінний сон</li><li data-icon="⚖️">Чергування навчання та відпочинку</li><li data-icon="🏋️">Фізична активність</li><li data-icon="🥗">Збалансоване харчування</li></ul></div>
+<div class="theory-block block-pink"><h4>💭 ЕМОЦІЙНИЙ РІВЕНЬ</h4><ul><li data-icon="💬">Ділитися почуттями з близькими</li><li data-icon="📔">Вести щоденник емоцій</li><li data-icon="🧘">Дихальні техніки</li><li data-icon="🎵">Музика, прогулянки, хобі</li></ul></div>
+<div class="theory-block block-purple"><h4>🧠 КОГНІТИВНИЙ РІВЕНЬ</h4><ul><li data-icon="✨">Позитивне мислення</li><li data-icon="🎯">Зосереджуватись на тому, що можна контролювати</li><li data-icon="✅">Ставити реалістичні цілі</li><li data-icon="🏆">Помічати свої успіхи</li></ul></div>
+<div class="theory-block block-orange"><h4>👣 ПОВЕДІНКОВИЙ РІВЕНЬ</h4><ul><li data-icon="🔄">Дотримуватися щоденних корисних звичок</li><li data-icon="🆘">Звертатися по допомогу за потреби</li><li data-icon="👥">Спілкуватися з друзями й родиною</li><li data-icon="🎨">Знаходити час для хобі</li></ul></div>
+</div>
+<h3 style="margin:24px 0 16px;color:var(--primary)">⚠️ Шкідливі способи подолання стресу:</h3>
+<div class="theory-grid">
+<div class="theory-block block-red"><h4>❌ УНИКАЙ ЦЬОГО!</h4><ul><li data-icon="🍔">Переїдання або відмова від їжі</li><li data-icon="🚫">Ізоляція від близьких і друзів</li><li data-icon="📱">Надмірне використання гаджетів</li><li data-icon="💊">Вживання психоактивних речовин</li></ul></div>
+</div>
+<div class="navigation"><button class="btn btn-secondary" onclick="goToMainPage()">← До змісту</button><button class="btn btn-primary" onclick="showS4('s4t1')">Далі: Завдання 1 →</button></div>
+</section>
+<section class="card hidden" id="s4t1">
+<h2>⚠️ Завдання 1. Шкідливі способи подолання стресу</h2>
+<div class="feedback feedback-warning mb-24"><strong>📌 Інструкція:</strong> Обери всі шкідливі способи подолання стресу, яких слід уникати.</div>
+<div class="task-options" id="s4t1o">
+<div class="option" data-correct="true" onclick="tog(this)" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}"><div class="option-checkbox"></div><div class="option-text"><div class="option-label">🍔 Переїдання або відмова від їжі</div></div></div>
+<div class="option" data-correct="true" onclick="tog(this)" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}"><div class="option-checkbox"></div><div class="option-text"><div class="option-label">🚫 Ізоляція від близьких і друзів</div></div></div>
+<div class="option" data-correct="false" onclick="tog(this)" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}"><div class="option-checkbox"></div><div class="option-text"><div class="option-label">🏃 Фізична активність</div></div></div>
+<div class="option" data-correct="true" onclick="tog(this)" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}"><div class="option-checkbox"></div><div class="option-text"><div class="option-label">📱 Надмірне використання гаджетів</div></div></div>
+<div class="option" data-correct="true" onclick="tog(this)" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}"><div class="option-checkbox"></div><div class="option-text"><div class="option-label">💊 Вживання психоактивних речовин</div></div></div>
+</div>
+<div id="s4t1f" class="feedback" style="display:none"></div>
+<div class="navigation"><button class="btn btn-secondary" onclick="showS4('s4Theory')">← Назад</button><button class="btn btn-primary" onclick="chkMulti('s4t1o','s4t1f',4,'step4_task1')">✓ Перевірити</button><button class="btn btn-success" onclick="showS4('s4t2')">Далі →</button></div>
+</section>
+<section class="card hidden" id="s4t2">
+<h2>🎯 Завдання 2. Заповни пропуски</h2>
+<div class="feedback feedback-warning mb-24"><strong>📌 Інструкція:</strong> Обери правильні слова з випадаючих списків, щоб заповнити пропуски у тексті про підтримку психічного здоров'я.</div>
+<div style="background:linear-gradient(135deg,#eff6ff,#dbeafe);border:2px solid #93c5fd;border-radius:14px;padding:24px;margin:16px 0">
+<p class="fill-blank-text">
+Щоб підтримати психічне здоров'я під час стресу, важливо:
+<select class="fill-blank-select" id="fb21"><option value="">???</option><option value="a">спати</option><option value="b">не спати</option><option value="c">кричати</option></select>
+не менше 8 годин,
+<select class="fill-blank-select" id="fb22"><option value="">???</option><option value="a">ізолюватися</option><option value="b">спілкуватися</option><option value="c">мовчати</option></select>
+з близькими,
+<select class="fill-blank-select" id="fb23"><option value="">???</option><option value="a">рухатися</option><option value="b">лежати</option><option value="c">сидіти</option></select>
+та знаходити час для
+<select class="fill-blank-select" id="fb24"><option value="">???</option><option value="a">хобі</option><option value="b">стресу</option><option value="c">сварок</option></select>.
+</p>
+</div>
+<div id="s4t2f" class="feedback" style="display:none"></div>
+<div class="navigation"><button class="btn btn-secondary" onclick="showS4('s4t1')">← Назад</button><button class="btn btn-primary" onclick="chkFillBlanks2()">✓ Перевірити</button><button class="btn btn-success" onclick="showS4('s4t3')">Далі →</button></div>
+</section>
+<section class="card hidden" id="s4t3">
+<h2>🎚️ Завдання 3. Оціни свій стан</h2>
+<div class="feedback feedback-warning mb-24"><strong>📌 Інструкція:</strong> Перемісти бігунки, щоб оцінити свій поточний стан (0 — дуже низький, 10 — відмінний).</div>
+<div class="slider-container"><div class="slider-label"><span>😊 Загальний настрій</span><span class="slider-value" id="moodV">5</span></div><input type="range" min="0" max="10" value="5" class="slider-input" oninput="document.getElementById('moodV').textContent=this.value" aria-label="Загальний настрій"></div>
+<div class="slider-container"><div class="slider-label"><span>⚡ Рівень енергії</span><span class="slider-value" id="energyV">5</span></div><input type="range" min="0" max="10" value="5" class="slider-input" oninput="document.getElementById('energyV').textContent=this.value" aria-label="Рівень енергії"></div>
+<div class="slider-container"><div class="slider-label"><span>😌 Рівень спокою</span><span class="slider-value" id="calmV">5</span></div><input type="range" min="0" max="10" value="5" class="slider-input" oninput="document.getElementById('calmV').textContent=this.value" aria-label="Рівень спокою"></div>
+<div class="slider-container"><div class="slider-label"><span>😰 Рівень тривоги</span><span class="slider-value" id="anxietyV">5</span></div><input type="range" min="0" max="10" value="5" class="slider-input" oninput="document.getElementById('anxietyV').textContent=this.value" aria-label="Рівень тривоги"></div>
+<div id="s4t3f" class="slider-feedback" style="display:none"></div>
+<div class="navigation"><button class="btn btn-secondary" onclick="showS4('s4t2')">← Назад</button><button class="btn btn-primary" onclick="chkSliders()">✓ Завершити оцінку</button><button class="btn btn-success" onclick="showS4('s4t4')">Далі →</button></div>
+</section>
+<section class="card hidden" id="s4t4">
+<h2>💬 Завдання 4. Як підтримати людину в стресі?</h2>
+<div class="feedback feedback-warning mb-24"><strong>📌 Питання:</strong> Що можна сказати людині, яка перебуває в стресі? Обери всі підходящі варіанти.</div>
+<div class="task-options" id="s4t4o">
+<div class="option" data-correct="true" onclick="tog(this)" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}"><div class="option-checkbox"></div><div class="option-text"><div class="option-label">💬 «Я розумію, що тобі зараз важко. Я поруч»</div></div></div>
+<div class="option" data-correct="true" onclick="tog(this)" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}"><div class="option-checkbox"></div><div class="option-text"><div class="option-label">🤗 «Розкажи, що тебе турбує. Я готовий вислухати»</div></div></div>
+<div class="option" data-correct="false" onclick="tog(this)" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}"><div class="option-checkbox"></div><div class="option-text"><div class="option-label">❌ «Не хвилюйся, це дрібниці»</div></div></div>
+<div class="option" data-correct="true" onclick="tog(this)" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}"><div class="option-checkbox"></div><div class="option-text"><div class="option-label">💪 «Що я можу зробити, щоб допомогти?»</div></div></div>
+<div class="option" data-correct="false" onclick="tog(this)" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}"><div class="option-checkbox"></div><div class="option-text"><div class="option-label">😤 «Іншим ще гірше, тож не скаржся»</div></div></div>
+</div>
+<div id="s4t4f" class="feedback" style="display:none"></div>
+<div class="navigation"><button class="btn btn-secondary" onclick="showS4('s4t3')">← Назад</button><button class="btn btn-primary" onclick="chkMulti('s4t4o','s4t4f',3,'step4_task4')">✓ Перевірити</button><button class="btn btn-success" onclick="goToStep(5)">Далі: Крок 5 →</button></div>
+</section>
+</main>
+<!-- КРОК 5 -->
+<main class="container hidden" id="step5Page">
+<div class="step-header"><div class="step-header-top"><h2 class="step-title">🆘 Крок 5. Коли звернутися за допомогою</h2><span class="step-badge">1 завдання</span></div></div>
+<section class="card" id="s5Theory">
+<h2>📖 Теоретичний блок</h2>
+<div class="theory-compact">
+<h4>🚨 КОЛИ ВАРТО ЗВЕРНУТИСЯ ЗА ДОПОМОГОЮ</h4>
+<p>Підтримка близьких і навички самодопомоги можуть допомогти впоратися зі стресом. Але якщо тривалий стрес виснажив організм до критичного рівня, йому складно відновитися без фахової допомоги.</p>
+</div>
+<h3 style="margin:20px 0 16px;color:var(--primary)">Ознаки, що потребують звернення до фахівця:</h3>
+<div class="stress-levels-grid">
+<div class="stress-level-card physical"><h5>🏃 ФІЗИЧНИЙ</h5><ul><li>Безсоння</li><li>Постійна втома</li><li>Частий головний біль</li></ul></div>
+<div class="stress-level-card emotional"><h5>💭 ЕМОЦІЙНИЙ</h5><ul><li>Постійна тривога</li><li>Відчуття «Я не справляюся»</li><li>Емоційне виснаження</li></ul></div>
+<div class="stress-level-card cognitive"><h5>🧠 КОГНІТИВНИЙ</h5><ul><li>Нав'язливі тривожні думки</li><li>Труднощі з концентрацією</li><li>Думки про самогубство</li></ul></div>
+<div class="stress-level-card behavioral"><h5>👣 ПОВЕДІНКОВИЙ</h5><ul><li>Ізоляція</li><li>Різка зміна поведінки</li><li>Втрата інтересу до улюблених справ</li></ul></div>
+</div>
+<div class="key-point">💡 <strong>Важливо!</strong> Якщо симптоми тривають декілька тижнів, посилюються, заважають навчанню й життю — зверніться по допомогу.</div>
+<div class="navigation"><button class="btn btn-secondary" onclick="goToMainPage()">← До змісту</button><button class="btn btn-primary" onclick="showS5('s5t1')">Далі: Завдання 1 →</button></div>
+</section>
+<section class="card hidden" id="s5t1">
+<h2>🔍 Завдання 1. Визнач критичні ознаки</h2>
+<div class="feedback feedback-warning mb-24"><strong>📌 Інструкція:</strong> Обери всі ознаки, за яких варто звернутися до фахівця.</div>
+<div class="task-options" id="s5t1o">
+<div class="option" data-correct="true" onclick="tog(this)" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}"><div class="option-checkbox"></div><div class="option-text"><div class="option-label">😴 Безсоння триває кілька тижнів</div></div></div>
+<div class="option" data-correct="true" onclick="tog(this)" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}"><div class="option-checkbox"></div><div class="option-text"><div class="option-label">💭 З'явилися думки про самогубство</div></div></div>
+<div class="option" data-correct="false" onclick="tog(this)" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}"><div class="option-checkbox"></div><div class="option-text"><div class="option-label">😊 Тимчасовий сум через оцінку</div></div></div>
+<div class="option" data-correct="true" onclick="tog(this)" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}"><div class="option-checkbox"></div><div class="option-text"><div class="option-label">😞 Втрата інтересу до всього, що раніше подобалося</div></div></div>
+<div class="option" data-correct="true" onclick="tog(this)" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}"><div class="option-checkbox"></div><div class="option-text"><div class="option-label">😰 Постійна тривога заважає жити</div></div></div>
+</div>
+<div id="s5t1f" class="feedback" style="display:none"></div>
+<div class="navigation"><button class="btn btn-secondary" onclick="showS5('s5Theory')">← Назад</button><button class="btn btn-primary" onclick="chkMulti('s5t1o','s5t1f',4,'step5_task1')">✓ Перевірити</button><button class="btn btn-success" onclick="goToStep(6)">Далі: Крок 6 →</button></div>
+</section>
+</main>
+<!-- КРОК 6 - РЕСУРСИ -->
+<main class="container hidden" id="step6Page">
+<div class="step-header"><div class="step-header-top"><h2 class="step-title">📱 Крок 6. Джерела онлайн-допомоги</h2></div></div>
+<section class="card">
+<h2>📱 Корисні ресурси для підлітків</h2>
+<div class="feedback feedback-warning mb-24"><strong>ℹ️ Інформація:</strong> Якщо тобі потрібна підтримка, ти можеш звернутися до цих безкоштовних ресурсів.</div>
+<div class="resource-card">
+<h4>🤖 Чат-бот «Не дрібниці»</h4>
+<p>Чат-бот психологічної підтримки для підлітків. Анонімно, безкоштовно, доступний 24/7.</p>
+<a href="https://t.me/no_trivia_bot" target="_blank" class="resource-link">Перейти до чат-бота →</a>
+</div>
+<div class="resource-card">
+<h4>💙 «Поруч»</h4>
+<p>Безкоштовні консультації для підлітків. Професійні психологи готові вислухати та допомогти.</p>
+<a href="https://shorturl.at/4sO51" target="_blank" class="resource-link">Отримати допомогу →</a>
+</div>
+<div class="resource-card">
+<h4>🌟 Teenergizer</h4>
+<p>Об'єднання підлітків та молоді. Психологічні онлайн-консультації.</p>
+<a href="https://is.gd/u5j07e" target="_blank" class="resource-link">Зв'язатися →</a>
+</div>
+<div class="key-point">💡 <strong>Пам'ятай:</strong> Звернення по допомогу — це ознака сили, а не слабкості!</div>
+<div class="navigation"><button class="btn btn-secondary" onclick="goToMainPage()">← До змісту</button><button class="btn btn-success" onclick="goToStep(7)">Далі: Самооцінювання →</button></div>
+</section>
+</main>
+<!-- КРОК 7 - САМООЦІНЮВАННЯ -->
+<main class="container hidden" id="step7Page">
+<div class="step6-header"><h2>🎉 Вітаємо! Ти завершив(ла) тренажер!</h2><p>Час дізнатися свій рівень</p></div>
+<div class="card"><h2>⭐ Оціни свої вміння</h2>
+<div class="skill-eval"><div class="skill-title">📝 Я можу пояснити, що таке стрес і як він впливає на здоров'я</div><div class="star-rating" data-skill="1"><span class="star" onclick="rate(1,1)">★</span><span class="star" onclick="rate(1,2)">★</span><span class="star" onclick="rate(1,3)">★</span><span class="star" onclick="rate(1,4)">★</span><span class="star" onclick="rate(1,5)">★</span></div></div>
+<div class="skill-eval"><div class="skill-title">🔄 Я розумію ефект самопідтримки стресу та як розірвати коло</div><div class="star-rating" data-skill="2"><span class="star" onclick="rate(2,1)">★</span><span class="star" onclick="rate(2,2)">★</span><span class="star" onclick="rate(2,3)">★</span><span class="star" onclick="rate(2,4)">★</span><span class="star" onclick="rate(2,5)">★</span></div></div>
+<div class="skill-eval"><div class="skill-title">💪 Я знаю способи підтримки психічного здоров'я під час стресу</div><div class="star-rating" data-skill="3"><span class="star" onclick="rate(3,1)">★</span><span class="star" onclick="rate(3,2)">★</span><span class="star" onclick="rate(3,3)">★</span><span class="star" onclick="rate(3,4)">★</span><span class="star" onclick="rate(3,5)">★</span></div></div>
+<div class="skill-eval"><div class="skill-title">🆘 Я розумію, коли варто звернутися по допомогу до фахівця</div><div class="star-rating" data-skill="4"><span class="star" onclick="rate(4,1)">★</span><span class="star" onclick="rate(4,2)">★</span><span class="star" onclick="rate(4,3)">★</span><span class="star" onclick="rate(4,4)">★</span><span class="star" onclick="rate(4,5)">★</span></div></div>
+</div>
+<div class="stats-grid">
+<div class="stat-card"><div class="stat-value" id="statTasks">0/12</div><div class="stat-label">✅ Виконано</div></div>
+<div class="stat-card"><div class="stat-value" id="statCorrect">0</div><div class="stat-label">🎯 Правильних</div></div>
+<div class="stat-card"><div class="stat-value" id="statSteps">0/5</div><div class="stat-label">📍 Кроків</div></div>
+<div class="stat-card"><div class="stat-value" id="statAccuracy">0%</div><div class="stat-label">🎯 Точність</div></div>
+</div>
+<div class="progress-circle-container"><div class="progress-circle" id="progressCircle"><div class="progress-circle-inner"><div class="circle-percentage" id="circlePercentage">0%</div><div class="circle-label">Прогрес</div></div></div></div>
+<div style="text-align:center"><div class="level-badge"><div class="level-badge-icon">⭐</div><div><div class="level-badge-title" id="finalLevelTitle">Початківець</div><div class="level-badge-desc" id="finalLevelDesc">⭐☆☆☆☆</div></div></div></div>
+<div class="tip-card">💡 <strong>Кожен новий крок відкриває нові можливості.</strong><br>🚀 Продовжуй навчатися!</div>
+<div class="navigation"><button class="btn btn-warning" onclick="resetProgress()">🔄 Пройти ще раз</button><button class="btn btn-primary" onclick="goToMainPage()">🏠 На головну</button></div>
+</main>
+<!-- MODALS -->
+<div class="modal-overlay" id="progressModal" role="dialog" aria-modal="true" aria-labelledby="pTitle">
+<div class="modal"><div class="modal-header"><h2 id="pTitle">📊 Мій прогрес</h2><button class="modal-close" onclick="closeModal('progressModal')">✕</button></div>
+<div class="text-center"><div style="font-size:48px;margin-bottom:16px" id="mEmoji">⭐☆☆☆☆</div><h3 style="color:var(--primary);margin-bottom:24px" id="mName">Початківець</h3>
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:20px">
+<div style="background:var(--bg);padding:14px;border-radius:12px"><div style="font-size:24px;font-weight:700;color:var(--accent)" id="mT">0/12</div><div style="font-size:12px;color:var(--text-muted)">Завдань</div></div>
+<div style="background:var(--bg);padding:14px;border-radius:12px"><div style="font-size:24px;font-weight:700;color:var(--success)" id="mC">0</div><div style="font-size:12px;color:var(--text-muted)">Правильних</div></div>
+<div style="background:var(--bg);padding:14px;border-radius:12px"><div style="font-size:24px;font-weight:700;color:var(--warning)" id="mS">0/5</div><div style="font-size:12px;color:var(--text-muted)">Кроків</div></div>
+<div style="background:var(--bg);padding:14px;border-radius:12px"><div style="font-size:24px;font-weight:700;color:var(--primary)" id="mA">0%</div><div style="font-size:12px;color:var(--text-muted)">Точність</div></div>
+</div>
+<div style="background:var(--border);height:12px;border-radius:6px;overflow:hidden;margin-bottom:12px"><div id="mBar" style="height:100%;background:linear-gradient(90deg,var(--accent),var(--success));width:0%;transition:width .5s"></div></div>
+<p style="font-weight:600;color:var(--primary)">Прогрес: <span id="mP">0%</span></p></div></div></div>
+<div class="modal-overlay" id="helpModal" role="dialog" aria-modal="true" aria-labelledby="hTitle">
+<div class="modal"><div class="modal-header"><h2 id="hTitle">❓ Як працювати</h2><button class="modal-close" onclick="closeModal('helpModal')">✕</button></div>
+<div class="feature-list">
+<div data-icon="🚀" style="padding:10px 0 10px 32px;position:relative;border-bottom:1px solid var(--border)"><strong>Як почати?</strong><br>Натисни «Розпочати параграф».</div>
+<div data-icon="✅" style="padding:10px 0 10px 32px;position:relative;border-bottom:1px solid var(--border)"><strong>Форми завдань:</strong><br>Тести, перетягування (працює на мобільних!), бігунки, заповнення пропусків, зіставлення, акордеон.</div>
+<div data-icon="🏆" style="padding:10px 0 10px 32px;position:relative"><strong>Прогрес:</strong><br>Натисни на віджет прогресу для перегляду статистики.</div>
+</div>
+<button class="btn btn-primary mt-24" onclick="closeModal('helpModal')" style="width:100%">Зрозуміло!</button></div></div>
+<script>
+var TOTAL_TASKS = 12;
+var ST = {
+step1: {t:1, c:0, tasks:{task1:0}},
+step2: {t:3, c:0, tasks:{task1:0, task2:0, task3:0}},
+step3: {t:3, c:0, tasks:{task1:0, task2:0, task3:0}},
+step4: {t:4, c:0, tasks:{task1:0, task2:0, task3:0, task4:0}},
+step5: {t:1, c:0, tasks:{task1:0}}
+};
+var SC = {1:0, 2:0, 3:0, 4:0, 5:0};
+var PT = {c:0, t:TOTAL_TASKS, a:[]};
+var state = {cs:0, sr:[0,0,0,0]};
+var selStress = null;
+var accordionCompleted = {q1:false, q2:false, q3:false, q4:false};
+function addC(id) {
+if (PT.a.indexOf(id) !== -1) return;
+PT.a.push(id);
+PT.c++;
+updST(id);
+updLive();
+saveP();
+}
+function updST(id) {
+var match = id.match(/step(\d+)_(task\d+)/);
+if (!match) return;
+var stepNum = parseInt(match[1]);
+var taskName = match[2];
+var stepKey = "step" + stepNum;
+var s = ST[stepKey];
+if (s && s.tasks.hasOwnProperty(taskName)) {
+s.tasks[taskName] = 1;
+s.c = 0;
+for (var k in s.tasks) { if (s.tasks[k]) s.c++; }
+if (s.c === s.t && !SC[stepNum]) {
+SC[stepNum] = 1;
+showToast("Крок " + stepNum + " завершено!", "🏆");
+}
+}
+updS6();
+}
+function updLive() {
+try {
+var c = 0;
+for (var i = 1; i <= 5; i++) c += ST["step" + i].c;
+var p = Math.min(100, Math.round(c / TOTAL_TASKS * 100));
+var b = document.getElementById("topProgressBar");
+if (b) b.style.width = p + "%";
+var wp = document.getElementById("widgetPercentage");
+if (wp) wp.textContent = p + "%";
+var wt = document.getElementById("widgetTasks");
+if (wt) wt.textContent = c + "/" + TOTAL_TASKS;
+updateWidgetMiniMap();
+renderNav();
+updS6();
+} catch (err) { console.error("Error in updLive:", err); }
+}
+function updateWidgetMiniMap() {
+var wb = document.getElementById("widgetMiniMap");
+if (!wb) return;
+wb.innerHTML = "";
+for (var i = 1; i <= 5; i++) {
+var dot = document.createElement("div");
+dot.className = "mini-step";
+if (SC[i]) dot.classList.add("completed");
+else if (i === state.cs) dot.classList.add("current");
+dot.textContent = i;
+wb.appendChild(dot);
+}
+}
+function saveP() {
+try {
+sessionStorage.setItem("s15v5", JSON.stringify({
+PT: {c: PT.c, t: TOTAL_TASKS, a: PT.a},
+ST: ST, SC: SC, state: state
+}));
+} catch (err) { console.error("Error saving:", err); }
+}
+function loadP() {
+try {
+var s = localStorage.getItem("s15v5");
+if (s) {
+var d = JSON.parse(s);
+if (d.PT) { PT.c = d.PT.c || 0; PT.a = d.PT.a || []; }
+if (d.ST) {
+for (var i = 1; i <= 5; i++) {
+if (d.ST["step" + i]) {
+ST["step" + i].c = d.ST["step" + i].c || 0;
+ST["step" + i].tasks = d.ST["step" + i].tasks || ST["step" + i].tasks;
+}
+}
+}
+if (d.SC) { for (var j = 1; j <= 5; j++) SC[j] = d.SC[j] || 0; }
+if (d.state) { state.cs = d.state.cs || 0; state.sr = d.state.sr || [0,0,0,0]; }
+}
+} catch (err) { console.error("Error loading:", err); }
+updLive();
+renderNav();
+}
+var steps = [
+{id:1, icon:"🎯", title:"Стартове завдання", tasks:1},
+{id:2, icon:"📚", title:"Що таке стрес?", tasks:3},
+{id:3, icon:"🔄", title:"Замкнене коло", tasks:3},
+{id:4, icon:"💪", title:"Підтримка здоров'я", tasks:4},
+{id:5, icon:"🆘", title:"Допомога", tasks:1},
+{id:6, icon:"📱", title:"Ресурси", tasks:0},
+{id:7, icon:"🏆", title:"Самооцінювання", tasks:0}
+];
+function renderNav() {
+var n = document.getElementById("stepNavigation");
+if (!n) return;
+n.innerHTML = "";
+for (var i = 0; i < steps.length; i++) {
+var s = steps[i];
+var d = document.createElement("div");
+d.className = "step-nav-item";
+var td = s.tasks > 0 ? ST["step" + s.id].c : 0;
+var ic = s.tasks > 0 && SC[s.id];
+if (s.id === 7 && SC[5]) d.classList.add("completed");
+else if (ic) d.classList.add("completed");
+else if (i === state.cs - 1) d.classList.add("active");
+d.innerHTML = '<div class="step-nav-number">' + (ic ? "✓" : (i+1)) + '</div><div class="step-nav-content"><div class="step-nav-title">' + s.icon + " " + s.title + '</div><div class="step-nav-status">' + (s.tasks > 0 ? td + "/" + s.tasks + " завдань" : s.id===6 ? "Інформація" : "Фінал") + '</div></div>';
+d.setAttribute("tabindex", "0");
+d.setAttribute("role", "button");
+(function(idx) {
+d.onclick = function() { goToStep(idx + 1); };
+d.onkeydown = function(e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); goToStep(idx + 1); } };
+})(i);
+n.appendChild(d);
+}
+}
+function updS6() {
+var c = 0;
+for (var i = 1; i <= 5; i++) c += ST["step" + i].c;
+var p = Math.min(100, Math.round(c / TOTAL_TASKS * 100));
+var ac = PT.t > 0 ? Math.round(PT.c / PT.t * 100) : 0;
+var cs = 0;
+for (var j = 1; j <= 5; j++) { if (SC[j]) cs++; }
+var e = function(id, v) { var el = document.getElementById(id); if (el) el.textContent = v; };
+e("statTasks", c + "/" + TOTAL_TASKS);
+e("statCorrect", PT.c);
+e("statSteps", cs + "/5");
+e("statAccuracy", ac + "%");
+var ci = document.getElementById("progressCircle");
+if (ci) ci.style.background = "conic-gradient(var(--success) " + p + "%,var(--bg) " + p + "%)";
+var cp = document.getElementById("circlePercentage");
+if (cp) cp.textContent = p + "%";
+var l = "Початківець", em = "⭐☆☆☆☆";
+if (p >= 76) { l = "Експерт зі стресостійкості"; em = "⭐⭐⭐⭐⭐"; }
+else if (p >= 51) { l = "Досвідчений"; em = "⭐⭐⭐☆☆"; }
+else if (p >= 26) { l = "Учень"; em = "⭐⭐☆☆☆"; }
+e("finalLevelTitle", l);
+e("finalLevelDesc", em);
+for (var k = 0; k < state.sr.length; k++) { if (state.sr[k] > 0) rate(k + 1, state.sr[k]); }
+}
+function hideAll() {
+var pages = ["mainPage","step1Page","step2Page","step3Page","step4Page","step5Page","step6Page","step7Page"];
+for (var i = 0; i < pages.length; i++) {
+var el = document.getElementById(pages[i]);
+if (el) el.classList.add("hidden");
+}
+}
+function goToMainPage() {
+hideAll();
+document.getElementById("mainPage").classList.remove("hidden");
+document.getElementById("headerTitle").textContent = "⚡§ 17. Стрес і його вплив на здоров'я людини";
+state.cs = 0;
+saveP();
+window.scrollTo({top: 0, behavior: "smooth"});
+}
+function goToStep(n) {
+hideAll();
+var pages = {1:"step1Page",2:"step2Page",3:"step3Page",4:"step4Page",5:"step5Page",6:"step6Page",7:"step7Page"};
+var el = document.getElementById(pages[n]);
+if (el) {
+el.classList.remove("hidden");
+state.cs = n;
+if (n === 2) showS2("s2Theory");
+if (n === 3) showS3("s3Theory");
+if (n === 4) showS4("s4Theory");
+if (n === 5) showS5("s5Theory");
+if (n === 7) updS6();
+saveP();
+window.scrollTo({top: 0, behavior: "smooth"});
+}
+}
+function showS2(id) {
+var ids = ["s2Theory","s2t1","s2t2","s2t3"];
+for (var i = 0; i < ids.length; i++) { var e = document.getElementById(ids[i]); if (e) e.classList.add("hidden"); }
+document.getElementById(id).classList.remove("hidden");
+if (id === "s2t2") initStress();
+window.scrollTo({top: 0, behavior: "smooth"});
+}
+function showS3(id) {
+var ids = ["s3Theory","s3t1","s3t2","s3t3"];
+for (var i = 0; i < ids.length; i++) { var e = document.getElementById(ids[i]); if (e) e.classList.add("hidden"); }
+document.getElementById(id).classList.remove("hidden");
+window.scrollTo({top: 0, behavior: "smooth"});
+}
+function showS4(id) {
+var ids = ["s4Theory","s4t1","s4t2","s4t3","s4t4"];
+for (var i = 0; i < ids.length; i++) { var e = document.getElementById(ids[i]); if (e) e.classList.add("hidden"); }
+document.getElementById(id).classList.remove("hidden");
+window.scrollTo({top: 0, behavior: "smooth"});
+}
+function showS5(id) {
+var ids = ["s5Theory","s5t1"];
+for (var i = 0; i < ids.length; i++) { var e = document.getElementById(ids[i]); if (e) e.classList.add("hidden"); }
+document.getElementById(id).classList.remove("hidden");
+window.scrollTo({top: 0, behavior: "smooth"});
+}
+function sel(el, gid) {
+if (el.classList.contains("disabled")) return;
+var opts = document.querySelectorAll("#" + gid + " .option");
+for (var i = 0; i < opts.length; i++) opts[i].classList.remove("selected");
+el.classList.add("selected");
+}
+function selAcc(el, gid, qid) {
+if (el.classList.contains("disabled")) return;
+var opts = document.querySelectorAll("#" + gid + " .option");
+for (var i = 0; i < opts.length; i++) opts[i].classList.remove("selected");
+el.classList.add("selected");
+var f = document.getElementById(gid + "f");
+if (!f) return;
+f.style.display = "block";
+if (el.dataset.correct === "true") {
+el.classList.add("correct");
+f.className = "feedback feedback-success";
+f.innerHTML = "<strong>✅ Правильно!</strong>";
+for (var i = 0; i < opts.length; i++) { opts[i].classList.add("disabled"); }
+accordionCompleted[qid] = true;
+} else {
+el.classList.add("incorrect");
+f.className = "feedback feedback-error";
+f.innerHTML = "<strong>❌ Неправильно.</strong> Спробуй ще раз.";
+}
+}
+function tog(el) {
+if (el.classList.contains("disabled")) return;
+el.classList.toggle("selected");
+}
+function chk(gid, tid) {
+var s = document.querySelector("#" + gid + " .option.selected");
+var f = document.getElementById(gid + "f");
+if (!f) return;
+f.style.display = "block";
+if (!s) { f.className = "feedback feedback-warning"; f.innerHTML = "⚠️ Обери варіант відповіді"; return; }
+if (s.dataset.correct === "true") {
+s.classList.add("correct");
+f.className = "feedback feedback-success";
+f.innerHTML = "<strong>✅ Правильно!</strong>";
+var opts = document.querySelectorAll("#" + gid + " .option");
+for (var i = 0; i < opts.length; i++) { opts[i].classList.add("disabled"); if (opts[i].dataset.correct === "true") opts[i].classList.add("correct"); }
+addC(tid);
+showToast("Завдання виконано!", "🎉");
+} else {
+s.classList.add("incorrect");
+f.className = "feedback feedback-error";
+f.innerHTML = "<strong>❌ Неправильно.</strong> Спробуй ще раз.";
+}
+}
+function chkMulti(gid, fid, need, tid) {
+var opts = document.querySelectorAll("#" + gid + " .option");
+var f = document.getElementById(fid);
+if (!f) return;
+f.style.display = "block";
+var selOpts = [];
+for (var i = 0; i < opts.length; i++) { if (opts[i].classList.contains("selected")) selOpts.push(opts[i]); }
+if (selOpts.length !== need) {
+f.className = "feedback feedback-warning";
+f.innerHTML = "⚠️ Обери <strong>" + need + "</strong> правильні відповіді.";
+return;
+}
+var ok = true;
+for (var j = 0; j < opts.length; j++) {
+var sb = opts[j].dataset.correct === "true";
+var is = opts[j].classList.contains("selected");
+if (sb && is) opts[j].classList.add("correct");
+else if (!sb && is) { opts[j].classList.add("incorrect"); ok = false; }
+else if (sb && !is) ok = false;
+opts[j].classList.add("disabled");
+}
+if (ok) {
+f.className = "feedback feedback-success";
+f.innerHTML = "<strong>✅ Правильно!</strong>";
+addC(tid);
+showToast("Завдання виконано!", "🎉");
+} else {
+f.className = "feedback feedback-error";
+f.innerHTML = "<strong>❌ Не зовсім.</strong> Спробуй ще раз.";
+for (var k = 0; k < opts.length; k++) opts[k].classList.remove("correct","incorrect","disabled");
+}
+}
+var stressData = [
+{order:1, text:"Стресова подія (затор, іспит, конфлікт)"},
+{order:2, text:"Реакція організму (тривога, напруження)"},
+{order:3, text:"Дія або адаптація"}
+];
+function initStress() {
+var bank = document.getElementById("stressBank");
+if (!bank) return;
+var cards = bank.querySelectorAll(".dnd-card");
+for (var i = 0; i < cards.length; i++) cards[i].remove();
+var shuffled = stressData.slice().sort(function() { return Math.random() - 0.5; });
+for (var j = 0; j < shuffled.length; j++) {
+var s = shuffled[j];
+var card = document.createElement("div");
+card.className = "dnd-card";
+card.draggable = true;
+card.dataset.order = s.order;
+card.innerHTML = '<span class="dnd-card-icon">🔄</span><span class="dnd-card-text">' + s.text + '</span>';
+card.addEventListener("dragstart", function(ev) { ev.dataTransfer.setData("text","stress"); selStress = this; });
+setupTouchDrag(card);
+card.onclick = function() {
+if (selStress === this) { selStress.style.outline = ""; selStress = null; }
+else { if (selStress) selStress.style.outline = ""; selStress = this; this.style.outline = "3px solid var(--warning)"; }
+};
+bank.appendChild(card);
+}
+var slots = document.querySelectorAll(".dnd-slot");
+for (var k = 0; k < slots.length; k++) {
+slots[k].classList.remove("filled");
+var ph = slots[k].querySelector(".dnd-slot-placeholder");
+if (ph) ph.style.display = "";
+slots[k].addEventListener("dragover", function(ev) { ev.preventDefault(); this.classList.add("drag-over"); });
+slots[k].addEventListener("dragleave", function() { this.classList.remove("drag-over"); });
+slots[k].addEventListener("drop", function(ev) { ev.preventDefault(); this.classList.remove("drag-over"); if (selStress) placeStress(this, selStress); });
+}
+var f = document.getElementById("s2t2f");
+if (f) f.style.display = "none";
+}
+function setupTouchDrag(card) {
+var startX, startY, initialX, initialY;
+var isDragging = false;
+card.addEventListener("touchstart", function(e) {
+isDragging = true;
+var touch = e.touches[0];
+startX = touch.clientX;
+startY = touch.clientY;
+var rect = card.getBoundingClientRect();
+initialX = rect.left;
+initialY = rect.top;
+card.classList.add("touch-active");
+card.style.position = "fixed";
+card.style.left = initialX + "px";
+card.style.top = initialY + "px";
+card.style.width = rect.width + "px";
+selStress = card;
+}, {passive: true});
+card.addEventListener("touchmove", function(e) {
+if (!isDragging) return;
+e.preventDefault();
+var touch = e.touches[0];
+var dx = touch.clientX - startX;
+var dy = touch.clientY - startY;
+card.style.left = (initialX + dx) + "px";
+card.style.top = (initialY + dy) + "px";
+}, {passive: false});
+card.addEventListener("touchend", function(e) {
+if (!isDragging) return;
+isDragging = false;
+card.classList.remove("touch-active");
+card.style.position = "";
+card.style.left = "";
+card.style.top = "";
+card.style.width = "";
+var touch = e.changedTouches[0];
+var slots = document.querySelectorAll(".dnd-slot");
+for (var i = 0; i < slots.length; i++) {
+var rect = slots[i].getBoundingClientRect();
+if (touch.clientX >= rect.left && touch.clientX <= rect.right &&
+touch.clientY >= rect.top && touch.clientY <= rect.bottom) {
+placeStress(slots[i], card);
+break;
+}
+}
+});
+}
+function dropStressHere(slot) {
+if (selStress) { placeStress(slot, selStress); selStress.style.outline = ""; selStress = null; }
+}
+function placeStress(slot, card) {
+if (slot.classList.contains("filled")) {
+var ex = slot.querySelector(".dnd-card");
+if (ex) document.getElementById("stressBank").appendChild(ex);
+}
+var ph = slot.querySelector(".dnd-slot-placeholder");
+if (ph) ph.style.display = "none";
+slot.appendChild(card);
+slot.classList.add("filled");
+card.style.outline = "";
+}
+function resetStress() { initStress(); showToast("Перемішано!", "🔄"); }
+function chkStress() {
+var f = document.getElementById("s2t2f");
+if (!f) return;
+f.style.display = "block";
+var slots = document.querySelectorAll(".dnd-slot");
+var filled = 0;
+for (var i = 0; i < slots.length; i++) { if (slots[i].classList.contains("filled")) filled++; }
+if (filled < 3) { f.className = "feedback feedback-warning"; f.innerHTML = "💡 Розмісти усі 3 картки у слотах!"; return; }
+var ok = true;
+for (var j = 0; j < slots.length; j++) {
+var card = slots[j].querySelector(".dnd-card");
+if (card && parseInt(card.dataset.order) !== parseInt(slots[j].dataset.pos)) ok = false;
+}
+if (ok) {
+f.className = "feedback feedback-success";
+f.innerHTML = "<strong>✅ Чудово!</strong> Послідовність правильна!";
+addC("step2_task2");
+showToast("Завдання виконано!", "🎉");
+} else {
+f.className = "feedback feedback-error";
+f.innerHTML = "<strong>❌ Не зовсім правильно.</strong> Перевір порядок і спробуй ще раз.";
+}
+}
+function chkMatching() {
+var f = document.getElementById("s3t1f");
+if (!f) return;
+f.style.display = "block";
+var answers = {m1:"b", m2:"a", m3:"c", m4:"d"};
+var ok = 0;
+for (var id in answers) {
+var s = document.getElementById(id);
+s.classList.remove("correct","incorrect");
+if (s.value === answers[id]) { s.classList.add("correct"); ok++; }
+else if (s.value) s.classList.add("incorrect");
+}
+if (ok === 4) {
+f.className = "feedback feedback-success";
+f.innerHTML = "<strong>✅ Чудово!</strong> Усі відповіді правильні!";
+addC("step3_task1");
+showToast("Завдання виконано!", "🎉");
+} else {
+f.className = "feedback feedback-error";
+f.innerHTML = "<strong>❌ " + ok + "/4 правильно.</strong> Спробуй ще раз.";
+setTimeout(function() { var ss = document.querySelectorAll(".matching-select"); for (var i = 0; i < ss.length; i++) ss[i].classList.remove("correct","incorrect"); }, 2000);
+}
+}
+function toggleAccordion(header) {
+var item = header.parentElement;
+var isActive = item.classList.contains("active");
+var items = document.querySelectorAll(".accordion-item");
+for (var i = 0; i < items.length; i++) items[i].classList.remove("active");
+if (!isActive) item.classList.add("active");
+}
+function chkAccordion(prefix) {
+var allCompleted = accordionCompleted.q1 && accordionCompleted.q2 && accordionCompleted.q3 && accordionCompleted.q4;
+var f = document.getElementById(prefix + "f");
+if (!f) return;
+if (allCompleted) {
+f.className = "feedback feedback-success";
+f.innerHTML = "<strong>✅ Чудово!</strong> Ти розібрався/лась, як розірвати коло стресу!";
+addC(prefix + "_task2");
+showToast("Завдання виконано!", "🎉");
+} else {
+f.className = "feedback feedback-warning";
+f.innerHTML = "💡 Відповідай на всі питання, щоб завершити завдання.";
+}
+}
+function chkFillBlanks() {
+var f = document.getElementById("s3t3f");
+if (!f) return;
+f.style.display = "block";
+var answers = {fb1:"a", fb2:"a", fb3:"a", fb4:"a", fb5:"a"};
+var ok = 0;
+for (var id in answers) {
+var s = document.getElementById(id);
+s.classList.remove("correct","incorrect");
+if (s.value === answers[id]) { s.classList.add("correct"); ok++; }
+else if (s.value) s.classList.add("incorrect");
+}
+if (ok === 5) {
+f.className = "feedback feedback-success";
+f.innerHTML = "<strong>✅ Чудово!</strong> Усі пропуски заповнено правильно!";
+addC("step3_task3");
+showToast("Завдання виконано!", "🎉");
+} else {
+f.className = "feedback feedback-error";
+f.innerHTML = "<strong>❌ " + ok + "/5 правильно.</strong> Зелені — правильні, червоні — ні.";
+}
+}
+function chkFillBlanks2() {
+var f = document.getElementById("s4t2f");
+if (!f) return;
+f.style.display = "block";
+var answers = {fb21:"a", fb22:"b", fb23:"a", fb24:"a"};
+var ok = 0;
+for (var id in answers) {
+var s = document.getElementById(id);
+s.classList.remove("correct","incorrect");
+if (s.value === answers[id]) { s.classList.add("correct"); ok++; }
+else if (s.value) s.classList.add("incorrect");
+}
+if (ok === 4) {
+f.className = "feedback feedback-success";
+f.innerHTML = "<strong>✅ Чудово!</strong> Усі пропуски заповнено правильно!";
+addC("step4_task2");
+showToast("Завдання виконано!", "🎉");
+} else {
+f.className = "feedback feedback-error";
+f.innerHTML = "<strong>❌ " + ok + "/4 правильно.</strong> Зелені — правильні, червоні — ні.";
+}
+}
+function chkSliders() {
+var mood = parseInt(document.getElementById("moodV").textContent);
+var energy = parseInt(document.getElementById("energyV").textContent);
+var calm = parseInt(document.getElementById("calmV").textContent);
+var anxiety = parseInt(document.getElementById("anxietyV").textContent);
+var avg = (mood + energy + calm + (10 - anxiety)) / 4;
+var f = document.getElementById("s4t3f");
+if (!f) return;
+f.style.display = "block";
+if (avg >= 7) {
+f.className = "slider-feedback excellent";
+f.innerHTML = "<strong>✅ Чудово!</strong> Твій стан на високому рівні! Середній бал: " + avg.toFixed(1) + "/10.";
+} else if (avg >= 5) {
+f.className = "slider-feedback good";
+f.innerHTML = "<strong>💡 Добре!</strong> Середній рівень. Спробуй техніки релаксації. Бал: " + avg.toFixed(1) + "/10.";
+} else {
+f.className = "slider-feedback needs-improvement";
+f.innerHTML = "<strong>⚠️ Зверни увагу!</strong> Твій стан потребує підтримки. Поговори з кимось довіреним. Бал: " + avg.toFixed(1) + "/10.";
+}
+addC("step4_task3");
+showToast("Оцінку збережено!", "📊");
+}
+function rate(si, r) {
+state.sr[si - 1] = r;
+saveP();
+var c = document.querySelector('.star-rating[data-skill="' + si + '"]');
+if (!c) return;
+var stars = c.querySelectorAll(".star");
+for (var i = 0; i < stars.length; i++) {
+if (i < r) stars[i].classList.add("active");
+else stars[i].classList.remove("active");
+}
+}
+function resetProgress() {
+if (confirm("Почати спочатку? Весь прогрес буде скинуто.")) {
+localStorage.removeItem("s15v5");
+location.reload();
+}
+}
+function showToast(msg, icon) {
+icon = icon || "✅";
+var c = document.getElementById("toastContainer");
+if (!c) return;
+var t = document.createElement("div");
+t.className = "toast";
+t.innerHTML = '<span class="toast-icon">' + icon + '</span><span class="toast-message">' + msg + '</span>';
+c.appendChild(t);
+setTimeout(function() { t.classList.add("hiding"); setTimeout(function() { t.remove(); }, 400); }, 4000);
+}
+function showProgressModal() {
+updS6();
+document.getElementById("progressModal").classList.add("active");
+var c = 0;
+for (var i = 1; i <= 5; i++) c += ST["step" + i].c;
+var p = Math.min(100, Math.round(c / TOTAL_TASKS * 100));
+var ac = PT.t > 0 ? Math.round(PT.c / PT.t * 100) : 0;
+var cs = 0;
+for (var j = 1; j <= 5; j++) { if (SC[j]) cs++; }
+var e = function(id, v) { var el = document.getElementById(id); if (el) el.textContent = v; };
+e("mT", c + "/" + TOTAL_TASKS);
+e("mC", PT.c);
+e("mS", cs + "/5");
+e("mA", ac + "%");
+e("mP", p + "%");
+var b = document.getElementById("mBar");
+if (b) b.style.width = p + "%";
+var l = "Початківець", em = "⭐☆☆☆☆";
+if (p >= 76) { l = "Експерт"; em = "⭐⭐⭐⭐⭐"; }
+else if (p >= 51) { l = "Досвідчений"; em = "⭐⭐⭐☆☆"; }
+else if (p >= 26) { l = "Учень"; em = "⭐⭐☆☆☆"; }
+e("mName", l);
+e("mEmoji", em);
+}
+function showHelpModal() { document.getElementById("helpModal").classList.add("active"); }
+function closeModal(id) { document.getElementById(id).classList.remove("active"); }
+var overlays = document.querySelectorAll(".modal-overlay");
+for (var oi = 0; oi < overlays.length; oi++) {
+overlays[oi].addEventListener("click", function(e) { if (e.target === this) this.classList.remove("active"); });
+}
+document.addEventListener("keydown", function(e) {
+if (e.key === "Escape") { var ms = document.querySelectorAll(".modal-overlay.active"); for (var i = 0; i < ms.length; i++) ms[i].classList.remove("active"); }
+});
+document.addEventListener("DOMContentLoaded", function() { loadP(); goToMainPage(); });
+</script>
+</body>
+</html>
